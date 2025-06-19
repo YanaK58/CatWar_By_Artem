@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Я жизнь люблю она моя</title>
+</head>
+<body>
+    <!-- -->
+    <div class="container">
+        <div class="content">
+            <h2> Меня зовут: <span id="name_output"></span> <br>
+              Сейчас я: <span id="position">Котёнок</span></h2>
+            <h2 id="h2">Мне доступны действия:</h2>
+            <div id="kitty">
+                <button  onclick="drink()">Попить молоко</button>
+                <button  onclick="sleep()">Поспать</button>
+                <button  onclick="play()">Играть с хвостом</button>
+            </div>
+            <div id="apprentice">
+                <button  onclick="hunt()">Охотиться</button>
+                <button  onclick="train()">Тренироваться</button>
+            </div>
+            <div id="warrior">
+                <button  onclick="hunt()">Охотиться</button>
+                <button  onclick="train()">Тренироваться</button>
+
+                <button  onclick="patrol()">Отправиться в патруль</button>
+                <button  onclick="dream()">Увидеть сон от звездных предков</button>
+
+            </div>
+            <div id="star">
+                <button onclick="depression()">Впасть в депресиию</button>
+            </div>
+            <h2 id="summ"></h2>
+            <div>
+                <button id="toBecomeAppre" onclick="toBecomeAppre()">Стать Оруженосцем</button>
+
+                <button id="toBecomeWarr" onclick="toBecomeWarr()">Стать Воителем</button>
+
+                <button id="toBecomeStar" onclick="toBecomeStar()">Отправиться в звёздное племя</button>
+
+                <a href="index.html" id="toBecomeKitty" onclick="newLive()">Переродиться</a>
+            </div>
+        </div>
+    </div>
+    <script src="index.js" ></script>
+</body>
+</html>
