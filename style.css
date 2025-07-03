@@ -1,4 +1,6 @@
-*{ text-align: center;} div{border: #333 2px solid;}
+*{ text-align: center; box-sizing: border-box;} 
+
+div{border: #333 2px solid;}
 
 .container{
     height: 100vh;
@@ -6,10 +8,12 @@
     justify-content: center;
     align-items: center;
     background: #fff;
+    flex-direction: column;
 }
 
 .content{
-    max-width: 370px;
+
+    width: 45vh;
     padding: 10px;
 }
 
@@ -20,8 +24,9 @@ a{
     padding: 3px;
     margin: 8px;
 }
+
 button{
-        text-decoration: none;
+    text-decoration: none;
     font-size: 15px;
     border: 0.5px solid #333;
     padding: 3px;
@@ -55,7 +60,23 @@ input{
     border: 1px solid #333;
     border-radius: 20px;
 }
-/*приветсвенное окно*/
+
+.news{
+    font-size: larger;
+    padding: 10px 25px;
+    color: #fff;
+    background-color: #df4545;
+    border-radius: 40px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+.news:hover{
+    background: #b40f33;
+}
+
+/*приветсвенное окно
+
 .modal_hi{
     display: flex; 
     position: fixed;
@@ -67,7 +88,80 @@ input{
     background-color: rgba(0, 0, 0, 0.5);
     border: 1px solid #333;
     border-radius: 20px;
+}*/
+
+
+
+
+
+/*profile*/
+#profile {
+    border: none;
 }
+
+.profile-content{
+    display: none; 
+    flex-direction: column;
+    padding: 35px;
+    min-width: 45vh;
+}
+
+.profile-content > p {
+    padding: 0;
+    margin: 2px;
+}
+
+.profile-content > h3 {
+    margin: 15px 0 5px 0;
+}
+
+/*ориентация*/
+
+#orientacion{
+    margin: 15px 0 0 0;
+    font-weight: 700;
+}
+
+#orientacion_title{
+    margin: 0;
+    padding: 0;
+    color: #8b8b8b;
+    
+}
+
+
+
+#o1{
+    color: #000000;
+}
+#o2{
+    color: #000000;
+}
+#o3{
+    color: #000000;
+}
+#o4{
+    color: #000000;
+}
+#o5{
+    color: #000000;
+}
+#o6{
+    color: #000000;
+}
+#o7{
+    color: #000000;
+}
+#o8{
+    color: #000000;
+}
+#o9{
+    color: #000000;
+}
+#o10{
+    color: #000000;
+}
+
 
 .modal-content {
   background-color: #fff;
