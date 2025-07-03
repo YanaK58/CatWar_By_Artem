@@ -8,10 +8,40 @@
 </head>
 <body>
     <!-- -->
+
+    
     <div class="container">
+        <div id="profile"> 
+            <button id="profile_btn" onclick="open_profile()"> Profile</button>
+            <div id="profile-content" class="profile-content">
+                <p>Mоё имя: <span id="name_output" >имя</span></p>
+                <p>Племя: <span id="clan_output">племя</span></p>
+                <p>Статус: <span id="status_output">должность</span></p>
+                <p>Пол: <span id="sex_output">пол</span></p>
+
+                <p id="orientacion" onclick="change_orientacion()"> <span id="o1">О</span>
+                    <span id="o2">Р</span>
+                    <span id="o3">И</span>
+                    <span id="o4">Е</span>
+                    <span id="o5">Н</span>
+                    <span id="o6">Т</span>
+                    <span id="o7">А</span>
+                    <span id="o8">Ц</span>
+                    <span id="o9">И</span>
+                    <span id="o10">Я</span>
+                </p>
+                <p id="orientacion_title"><i>тыкни</i></p>
+
+                <h3>Семья</h3>
+                <p>Мама: <span id="mom_output">имя</span></p>
+                <p>Папа: <span id="dad_output">имя</span></p>
+                <div id="extra-relatives-container">
+                  <!-- Сюда будут добавляться родственники -->
+                </div>
+                <button onclick="close_profile()">Close</button>
+            </div>
+        </div>
         <div class="content">
-            <h2> Меня зовут: <span id="name_output"></span> <br>
-              Сейчас я: <span id="position">Котёнок</span></h2>
             <h2 id="h2">Мне доступны действия:</h2>
             <div id="kitty">
                 <button  onclick="drink()">Попить молоко</button>
