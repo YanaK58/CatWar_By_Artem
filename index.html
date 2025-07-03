@@ -11,39 +11,43 @@
     <!-- -->
 
 
-        <div id="modal_hi" class="modal_hi">
+        <div id="modal" class="modal">
             <div class="modal-content">
                 <h2>Приветствую!</h2>
-                <p>Вы попали в бэта версию КэтварByАртём версии <span style="font-size: large; font-weight: bold; color: rgb(24, 12, 199);">2.0</span> разработвнный мною, голубым Артёмом. </p>
+                <p>Вы попали в бэта версию КэтварByАртём версии <span style="font-size: large; font-weight: bold; color: rgb(24, 12, 199);">2.1</span> разработвнный голубым Артёмом. </p>
                 <h3>Об исправлениях</h3>
                 <ul> 
-                    <li>Орфография - не исправлено :)</li>
-                    <li>Отец всё еще ходит за хлебом</li>
-                    <li>Возможность выбрать пол (ни на что не влияет &#129313;)</li>
-                    <li>-Сюжет, +Действия и должности</li>
-                    <li> &#128539; &#129395; Смайлики &#129322; &#128122; (шикарное нововведение) 	&#128515;</li>
+                    <li>Возвращение блудного отца</li>
+                    <li>У тебя есть пол</li>
+                    <li>Появилось какое-то подобие профиля</li>
+                    <li></li>
                 </ul>
+                <small><p style="text-decoration: underline;">  Данный сайт не несет в себе никакого смысла и особой пользы обществу.</p>
+                <p> Так же проэкт не несет в себе цели кого либо оскорбить по политисечким, половым, гендерным, религиозным, духовным, нравственным и прочим убежлениям и ценностям.  </p></small>
+                <p>Да хранит тебя Звездное племя!</p>
+            </form>
             <button id="start" onclick="closeModal()" >Start</button>
             </div>
         </div>
 
  
     <div class="container" id="S_2">
+        <button class="news" onclick="openModal()">Что нового</button>
         <div class="content">
             <p>Для начала давате определимся</p>
             <span>Где вы хотите родиться?</span>
 
             <form>
-                <input type="radio" name="clan" id="ThunderClan" value="ThunderClan">
+                <input type="radio" name="clan" id="ThunderClan" value="Грозовое племя">
                 <label for="ThunderClan"> Грозовое племя</label>
 
-                <input type="radio" name="clan" id="RiverClan" value="RiverClan">
+                <input type="radio" name="clan" id="RiverClan" value="Речное племя">
                 <label for="RiverClan"> Речное племя</label>
 
-                <input type="radio" name="clan" id="WindClan" value="WindClan">
+                <input type="radio" name="clan" id="WindClan" value="племя Ветра">
                 <label for="WindClan"> племя Ветра</label>
 
-                <input type="radio" name="clan" id="ShadowClan" value="ShadowClan">
+                <input type="radio" name="clan" id="ShadowClan" value="племя Теней">
                 <label for="ShadowClan"> племя Теней</label>
 
             </form>
@@ -63,12 +67,20 @@
             </form>
 
             <label for="name_mom">Выберете как зовут ваших родителей</label>
-            <form>
+            <form >
                 <input type="text" id="name_mom" placeholder="Имя королевы">
                 <input type="text" id="name_dad" placeholder="Имя воителя">
+                
+                <div style="border: none;" id="add_relative">
+                
+                </div>
             </form>
 
-            <button id="save" onclick=" saveClan();  saveText(); showBlock3();">Родится</button>
+            <!--добавить родственника-->
+            <button id="add" onclick="add()">Добавить</button>
+
+
+            <button id="save" onclick="  saveText(); showBlock3();">Родится</button>
 
         </div>
     </div>
