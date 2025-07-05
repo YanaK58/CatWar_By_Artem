@@ -210,21 +210,76 @@ input{
     display: none;
 }
 
+#relationship{
+    display: none;
+    border: 1px solid #ce384c;
+    border-radius: 45px;
+    padding: 3px;
+    background-color: #ffd0d4;
+    color: #b40f33;
+}
+
+#profile_btn{
+    font-size: 17px;
+    border: 1px solid #371d58;
+    border-radius: 45px;
+    padding: 7px 15px;
+    color: #40097e;
+    background-color: #fce0ff;
+}
+
+/*декор кнопочек действий */
+
+#kitty button{
+    
+    
+}
+
+#apprentice button{
+    
+    
+}
+
+#warrior button{
+    
+    
+}
+
+#star button{
+
+}
+
 /*кнопочки смены должности*/
 
 #toBecomeAppre{
     display: none;
+    border: 1px solid #59afd1;
+    border-radius: 5px;
+    padding: 3px;
+    color: #158ebe;
+    background-color: #e6f8ff;
 }
 #toBecomeWarr{
     display: none;
+    border: 1px solid #59afd1;
+    border-radius: 5px;
+    padding: 3px;
+    color: #158ebe;
+    background-color: #e6f8ff;
 }
 #toBecomeStar{
     display: none;
+    border: 1px solid #59afd1;
+    border-radius: 5px;
+    padding: 3px;
+    color: #158ebe;
+    background-color: #e6f8ff;
 }
 #toBecomeKitty{
     display: none;
+    border: 1px solid #59afd1;
+    border-radius: 5px;
+    padding: 3px;
+    color: #158ebe;
+    background-color: #e6f8ff;
 }
-
-
-
-
