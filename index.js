@@ -32,14 +32,15 @@ function saveText() {
 }
 
 
-//гпт для второй страницы 
-window.onload = function() {
     const name = localStorage.getItem("name") || "Неизвестно";
     const clan = localStorage.getItem("clan") || "---";
     const sex = localStorage.getItem("sex") || "Не определился";
     const mom = localStorage.getItem("mom") || "Неизвестно";
     const dad = localStorage.getItem("dad") || "Неизвестно";
     const relatives = JSON.parse(localStorage.getItem("relatives") || "[]");
+//гпт для второй страницы 
+window.onload = function() {
+
     
 
 
@@ -355,36 +356,50 @@ let star = 5;
 //кнопочки стать ....
 function toBecomeAppre(){
     console.log("come appre");
-    action_summ = 0;
+    
     position = "Оруженосец";
     document.getElementById("status_output").innerText = position;
+
+    //смена имени
+    const appre_name = prompt("Меня посвятят в оруженосцы. Какое будет мое новое имя? Оставь пустым если хочешь оставить предыдущее")
+    if ( appre_name) {
+        alert("Твоё новое имя: " + appre_name);
+        document.getElementById("name_output").innerText = appre_name;
+    }
+
     //скрывание остальных частей
     document.getElementById("kitty").style.display = "none";
     document.getElementById("apprentice").style.display = "block";
 
     document.getElementById("toBecomeAppre").style.display ="none";
-    document.getElementById("summ").innerText = "До посвящения осталось: " + (apprentice - action_summ) ;
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     document.getElementById("h2").innerText = "Мне доступны действия: "
 }
 
 function toBecomeWarr(){
     console.log("come warrior");
-    action_summ = 0;
     position = "Воитель";
     document.getElementById("status_output").innerText = position;
+
+    //смена имени
+    const warr_name = prompt("Меня посвятят в Воители. Какое будет мое новое имя? Оставь пустым если хочешь оставить предыдущее")
+    if ( warr_name) {
+        alert("Твоё новое имя: " + warr_name);
+        document.getElementById("name_output").innerText = warr_name;
+    }
+
     //скрывание остальных частей
     document.getElementById("apprentice").style.display = "none";
     document.getElementById("warrior").style.display = "block";
 
 
     document.getElementById("toBecomeWarr").style.display ="none";
-    document.getElementById("summ").innerText = "До попадания в звездное племя осталось: " + (apprentice - action_summ) ;
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     document.getElementById("h2").innerText = "Мне доступны действия: "
 }
 
 function toBecomeStar(){
     console.log("come star");
-    action_summ = 0;
     position = "Звёздный предок";
     document.getElementById("status_output").innerText = position;
     //скрывание остальных частей
@@ -412,9 +427,9 @@ function drink (){
     console.log('работает!');
     document.getElementById("h2").innerText = "Я попил молока";
     action_summ += 1;
-    document.getElementById("summ").innerText = "До посвящения осталось: " + (apprentice - action_summ) ;
-    //появлкние кнопочек 
-    if(action_summ >= apprentice){
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
+    //появлкние кнопочек   "Сейчас мне: " + (apprentice - action_summ) + " лун"
+    if(action_summ >= 6){
         document.getElementById("toBecomeAppre").style.display = "flex";
     }
 }
@@ -424,9 +439,9 @@ function sleep (){
     console.log('работает!');
     document.getElementById("h2").innerText = "Я учтроился в удобной подстилке из мха и лисьтев и провалился в сон. Что же мне сегодня присниться?";
     action_summ += 1;
-    document.getElementById("summ").innerText = "До посвящения осталось: " + (apprentice - action_summ);
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     //появлкние кнопочек 
-    if(action_summ >= apprentice){
+    if(action_summ >= 6){
         document.getElementById("toBecomeAppre").style.display = "flex";
     }
 }
@@ -436,28 +451,45 @@ function play (){
     console.log('работает!');
     document.getElementById("h2").innerText = "Я начал пытаться поймать свой хвост. Почему он вечно от меня убегает?";
     action_summ += 1;
-    document.getElementById("summ").innerText = "До посвящения осталось: " + (apprentice - action_summ);
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     //появлкние кнопочек 
-    if(action_summ >= apprentice){
+    if(action_summ >= 6){
         document.getElementById("toBecomeAppre").style.display = "flex";
     }
 }
+let relationship = false;
 
 //действия оруженосца
 function hunt(){
     event.preventDefault();
     document.getElementById("h2").innerText = "Нужно пойти наловить жестяных полёвок для племни!";
-    action_summ += 1;
+    
     if (position == "Оруженосец"){
-           document.getElementById("summ").innerText = "До посвящения осталось: " + (warrior - action_summ);
-               //появлкние кнопочек 
-                if(action_summ >= warrior){
-                    document.getElementById("toBecomeWarr").style.display = "flex";
-                }
-    } else{
-        document.getElementById("summ").innerText = "До попадания в звездное племя осталось: " + (star - action_summ);
+            
+
+            action_summ += 1;
+            document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
             //появлкние кнопочек 
-            if(action_summ >= star){
+            if( action_summ >= 8 & relationship == false ){
+                document.getElementById("relationship").style.display = "flex"
+                relationship = true;
+                if (sex == "Кот"){
+                    alert ("Я уже достаточно взрослый что бы заводить отношения")
+                } else {
+                    alert ("Я уже достаточно взрослая что бы заводить отношения")
+                } 
+            }else if(action_summ >= 12){
+                document.getElementById("toBecomeWarr").style.display = "flex";
+            
+            }
+            
+            
+    } else{
+        document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
+        action_summ += 10;
+        document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
+            //появлкние кнопочек 
+            if(action_summ >= 100){
                     document.getElementById("toBecomeStar").style.display = "flex";
             }
             
@@ -467,18 +499,30 @@ function hunt(){
 function train(){
     event.preventDefault();
     document.getElementById("h2").innerText = "Надо больше тренироваться и тогда я стану сильнее";
-    action_summ += 1;
+    
+
     if (position == "Оруженосец"){
-           document.getElementById("summ").innerText = "До посвящения осталось: " + (warrior - action_summ);
+        action_summ += 1;
+        document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
                  //появлкние кнопочек 
-                if(action_summ >= warrior){
-                    document.getElementById("toBecomeWarr").style.display = "flex";
-                }
+                if( action_summ >= 8 & relationship == false ){
+                document.getElementById("relationship").style.display = "flex"
+                relationship = true;
+                if (sex == "Кот"){
+                    alert ("Я уже достаточно взрослый что бы заводить отношения")
+                } else {
+                    alert ("Я уже достаточно взрослая что бы заводить отношения")
+                } 
+            }else if(action_summ >= 12){
+                document.getElementById("toBecomeWarr").style.display = "flex";
+            
+            }
     } else{
-            document.getElementById("summ").innerText = "До попадания в звездное племя осталось: " + (star - action_summ);
+        action_summ += 10;
+        document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
             //появлкние кнопочек 
-            if(action_summ >= star){
-                    document.getElementById("toBecomeStar").style.display = "flex";
+            if(action_summ >= 100){
+                document.getElementById("toBecomeStar").style.display = "flex";
             }
     }
 }
@@ -487,10 +531,10 @@ function train(){
 function patrol(){
     event.preventDefault();
     document.getElementById("h2").innerText = "Отправлюсь ка я проверить границы нашего племени";
-    action_summ += 1;
-    document.getElementById("summ").innerText = "До попадания в звездное племя осталось: " + (star - action_summ);
+    action_summ += 10;
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     //появлкние кнопочек 
-    if(action_summ >= star){
+    if(action_summ >= 100){
         document.getElementById("toBecomeStar").style.display = "flex"
     }
 }
@@ -498,10 +542,10 @@ function patrol(){
 function dream(){
     event.preventDefault();
     document.getElementById("h2").innerText = "Увидел сон. Почему мне сянтся голубые мужики? Что звёздное племя хочет мне этим сказать? ...";
-    action_summ += 1;
-    document.getElementById("summ").innerText = "До попадания в звездное племя осталось: " + (star - action_summ);
+    action_summ += 10;
+    document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     //появлкние кнопочек 
-    if(action_summ >= star){
+    if(action_summ >= 100){
         document.getElementById("toBecomeStar").style.display = "flex"
     }
 }
@@ -511,6 +555,10 @@ function depression(){
     event.preventDefault();
     document.getElementById("h2").innerText = "*Впал в депресиию изза того что умер*";
 }
+
+//действиe "найти пару"
+//id="relationship" onclick="tinder()"
+function tinder() {}
 
 ////////////////////////////////////////////////////////////////////
 
