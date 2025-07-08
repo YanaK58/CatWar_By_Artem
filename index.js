@@ -6,7 +6,17 @@ function saveText() {
     localStorage.setItem("clan", clan);
 
     // Сохраняем пол
-    const sex = document.querySelector('input[name="sex"]:checked')?.id === "male" ? "Кот" : "Кошка";
+    const selectedSex = document.querySelector('input[name="sex"]:checked')?.id;
+    let sex;
+    if (selectedSex === "male") {
+        sex = "Кот";
+    } else if (selectedSex === "female") {
+        sex = "Кошка";
+    } else if (selectedSex === "laminat") {
+        sex = "Ламинат"; 
+    } else {
+        sex = "Неизвестно"; 
+    }
     localStorage.setItem("sex", sex);
 
     // Сохраняем имя
@@ -304,6 +314,9 @@ function open_profile() {
     document.getElementById("profile-content").style.display = "flex";
     document.getElementById("profile_btn").style.display = "none";
     document.getElementById("profile").style.border = " #333 2px solid"
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function close_profile(){
@@ -374,6 +387,9 @@ function toBecomeAppre(){
     document.getElementById("toBecomeAppre").style.display ="none";
     document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     document.getElementById("h2").innerText = "Мне доступны действия: "
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function toBecomeWarr(){
@@ -396,6 +412,9 @@ function toBecomeWarr(){
     document.getElementById("toBecomeWarr").style.display ="none";
     document.getElementById("summ").innerText = "Сейчас мне: " +  action_summ + " лун";
     document.getElementById("h2").innerText = "Мне доступны действия: "
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function toBecomeStar(){
@@ -410,6 +429,11 @@ function toBecomeStar(){
     document.getElementById("toBecomeStar").style.display ="none";
     document.getElementById("h2").innerText = "Мне доступны действия: "
     document.getElementById("summ").style.display ="none";
+
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
+    document.getElementById("relationship").style.display = "none";
 }
 
 
@@ -432,6 +456,9 @@ function drink (){
     if(action_summ >= 6){
         document.getElementById("toBecomeAppre").style.display = "flex";
     }
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function sleep (){
@@ -475,9 +502,13 @@ function hunt(){
                 relationship = true;
                 if (sex == "Кот"){
                     alert ("Я уже достаточно взрослый что бы заводить отношения")
-                } else {
+                } else if (sex == "Кошка") {
                     alert ("Я уже достаточно взрослая что бы заводить отношения")
-                } 
+                } else if (sex == "Ламинат"){
+                    alert ("Мы/Их уже достаточно взрослые что бы заводить отношения")
+                } else {
+                    alert ("Я не выбрало пол, но я уже достаточно взрослое что бы заводить отношения")
+                }
             }else if(action_summ >= 12){
                 document.getElementById("toBecomeWarr").style.display = "flex";
             
@@ -494,6 +525,9 @@ function hunt(){
             }
             
     }
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function train(){
@@ -510,9 +544,13 @@ function train(){
                 relationship = true;
                 if (sex == "Кот"){
                     alert ("Я уже достаточно взрослый что бы заводить отношения")
-                } else {
+                } else if (sex == "Кошка") {
                     alert ("Я уже достаточно взрослая что бы заводить отношения")
-                } 
+                } else if (sex == "Ламинат"){
+                    alert ("Мы/Их уже достаточно взрослые что бы заводить отношения")
+                } else {
+                    alert ("Я не выбрало пол, но я уже достаточно взрослое что бы заводить отношения")
+                }
             }else if(action_summ >= 12){
                 document.getElementById("toBecomeWarr").style.display = "flex";
             
@@ -525,6 +563,9 @@ function train(){
                 document.getElementById("toBecomeStar").style.display = "flex";
             }
     }
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 //действия воителя
@@ -537,6 +578,9 @@ function patrol(){
     if(action_summ >= 100){
         document.getElementById("toBecomeStar").style.display = "flex"
     }
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 function dream(){
@@ -548,6 +592,9 @@ function dream(){
     if(action_summ >= 100){
         document.getElementById("toBecomeStar").style.display = "flex"
     }
+
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "none";
 }
 
 //действия звездного племени 
@@ -558,7 +605,56 @@ function depression(){
 
 //действиe "найти пару"
 //id="relationship" onclick="tinder()"
-function tinder() {}
+
+class Person {
+    constructor(name, age, status, message, image ){
+        this.name = name;
+        this.age = age;
+        this.status = status;
+        this.message = message;
+        this.image = image;
+    }
+
+    show_info () {
+        document.getElementById("character-name").innerText =  this.name;
+        document.getElementById("character-status").innerText =  this.status;
+        document.getElementById("character-age").innerText =  this.age + " лун.";
+        document.getElementById("character-message").innerText = "О себе: " + this.message;
+        document.getElementById("character-image").src = this.image;
+    }
+}
+
+// ✅ Эти переменные — вне DOMContentLoaded
+const characters = [
+    
+    new Person("Мошка", "12", "Целительница (вспомниаем что целителям запрещено иметь пару, криминальчик ~~~)", 'Весёлая и добродушная кошка, только недавно ставшая целителем своего племени после трагической смерти своей наставницы. Она еще слишком молода, не успела насладиться жизнью, еще "не нагулялась" а уже связана обетом безбрачия', "six.jpg"),
+    new Person("Берёзогрив так же его называют Дуб", "38", "Воитель соседнего племени", "Любит смотреть, как ветер колышет листья. Его в этой жизни уже ничего не колышет. На ваше мнение он клал свой огромный ... ", "two.jpg"),
+    new Person("Шиповница", "27", "Воительница", "Энергичная и упрямая воительница. Всегда говорит прямо и не боится высказать мнение. Любит охоту и скоростные погони. Нормис она кароче, ничего интересного я не придумала.", "four.jpg"),
+    new Person("Сороконог", "102", "Старый воин", "Старый дед. . Любит запах мокрой земли.... Моря..... Соли.... Солей...... Соплей.... Ну кароче, имеет очень острый нюх и во всю его использует", "three.jpg"),
+    new Person("Туманолапка", "7", "Оруженосец", "Любопытная и молчаливая. Любит туман. Боиться грома.  Мелкий невдуплёныш. Куда лапы свои тянешь? Она же ещё ребёнок! ", "one.jpg"),
+    new Person("Орлячий Коготь", "27", "Воитель", "У него упоротое имя которое я решила оставить. Вообще нейросеть хуйню какую то сгенерировала", "five.jpg"),
+    
+];
+
+let currentIndex = 0;
+let savedCharacter = null;
+
+function tinder() {
+    characters[currentIndex].show_info();
+    currentIndex = (currentIndex + 1) % characters.length;
+}
+
+function save_p() {
+    //Скрывает уведомление о паре
+    document.getElementById("saved-person").style.display = "flex";
+
+    const indexToSave = (currentIndex - 1 + characters.length) % characters.length;
+    savedCharacter = characters[indexToSave];
+    document.getElementById("saved-person").innerText =
+        `Вы cтали парой с котом/кошкой: ${savedCharacter.name} (${savedCharacter.status}, ${savedCharacter.age} лун)`;
+    document.getElementById("para_output").innerText = `Пара: ${savedCharacter.name};`
+}
+
 
 ////////////////////////////////////////////////////////////////////
 
@@ -573,6 +669,3 @@ btn.onclick = function () {
   modal.style.display = "block";
 }
   */
-
-
-
